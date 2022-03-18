@@ -26,7 +26,7 @@ function Cartdetail(props) {
     setAllData(props.location.productdetailProps.allItems); 
     setTotal(0);
   }, []);
-
+  // incrementProd(item)
   console.log('all..........', allData);
 
   useEffect(() => {
@@ -63,29 +63,32 @@ function Cartdetail(props) {
   };
   function incrementProd(item) {
     
+    console.log('called', bagIncrement)
     if (item.name == "Bags") {
-      setBagPrice(item.price * bagIncrement);
+      console.log('123')
+      setBagPrice(item.price * (bagIncrement + 1));
+      // console.log('bahins',bagIncrement)
       setBagIncrement(bagIncrement + 1);
+
       // setTotal(parseInt(item.price.replace("$",'')) * parseInt(bagIncrement + 1));
       // setTotal(item.price * bagIncrement);
     }
     if (item.name == "Watch") {
-      setWatchPrice(item.price * watchIncrement);
-      
+      setWatchPrice(item.price * (watchIncrement + 1));
       setWatchIncrement(watchIncrement + 1);
       // setTotal(
       //   parseInt(item.price.replace("$", "")) * parseInt(watchIncrement + 1)
       // );
     }
     if (item.name == "Laptop") {
-      setLaptopPrice(item.price * laptopIncrement);
+      setLaptopPrice(item.price * (laptopIncrement + 1));
       setLaptopIncrement(laptopIncrement + 1);
       // setTotal(
       //   parseInt(item.price.replace("$", "")) * parseInt(laptopIncrement + 1)
       // );
     }
     if (item.name == "Cup") {
-      setCupPrice(item.price * cupIncrement);
+      setCupPrice(item.price * (cupIncrement + 1));
       setCupIncrement(cupIncrement + 1);
       // setTotal(
       //   parseInt(item.price.replace("$", "")) * parseInt(laptopIncrement + 1)
@@ -193,7 +196,7 @@ function Cartdetail(props) {
                     ? `${watchPrice}$`
                     : item.name == "Laptop"
                     ? `${laptopPrice}$`
-                    : item.name == "Cup" && `${cupPrice}$`}
+                    : item.name == "Cup" ? `${cupPrice}$`:''}
                 </td>
                 {/* {console.log('item.price * bagIncrement', typeof(item.price))} */}
                 <td>
